@@ -3,7 +3,7 @@
 use strict;
 use warnings;
 
-use Test::More 'no_plan';
+use Test::More tests => 27;
 use Test::Exception;
 
 use Fey;
@@ -115,7 +115,8 @@ foreach my $person (@people) {
 
 {
 
-    my $select = $Person->select('last_name')->where( $Person->column('first_name'), '==', 'Homer');
+    my $select = $Person->select( $Person->column('last_name') )
+                        ->where( $Person->column('first_name'), '==', 'Homer');
     isa_ok($select, 'FeyX::Active::SQL::Select');
     {
         my $sth = $select->execute;
