@@ -14,7 +14,7 @@ BEGIN {
     use_ok('FeyX::Active::Table');
 }
 
-unlink 'foo' if -e 'foo';
+unlink 'test_db' if -e 'test_db';
 
 my $schema = FeyX::Active::Schema->new( name => 'Testing' );
 isa_ok($schema, 'FeyX::Active::Schema');
@@ -23,7 +23,7 @@ isa_ok($schema, 'Fey::Schema');
 isa_ok($schema->dbi_manager, 'Fey::DBIManager');
 
 lives_ok {
-    $schema->dbi_manager->add_source( dsn => 'dbi:SQLite:dbname=foo' );
+    $schema->dbi_manager->add_source( dsn => 'dbi:SQLite:dbname=test_db' );
 } '... created the new source okay';
 
 isa_ok($schema->dbi_manager->default_source, 'Fey::DBIManager::Source');

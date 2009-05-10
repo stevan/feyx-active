@@ -16,25 +16,58 @@ __END__
 
 =head1 NAME
 
-FeyX::Active - A Moosey solution to this problem
+FeyX::Active - An extension to Fey for active tables
 
 =head1 SYNOPSIS
 
+  use Fey;
   use FeyX::Active;
+
+  my $schema = FeyX::Active::Schema->new( name => 'MySchema' );
+
+  $schema->dbi_manager->add_source( dsn => 'dbi:SQLite:dbname=foo' );
+
+  my $Person = FeyX::Active::Table->new(name => 'Person');
+  $Person->add_column( Fey::Column->new( name => 'first_name', type => 'varchar' ) );
+  $Person->add_column( Fey::Column->new( name => 'last_name',  type => 'varchar' ) );
+
+  $schema->add_table( $Person );
+
+  my @people = (
+      { first_name  => 'Homer', last_name => 'Simpson' },
+      { first_name  => 'Marge', last_name => 'Simpson' },
+      { first_name  => 'Bart',  last_name => 'Simpson' },
+  );
+
+  foreach my $person (@people) {
+      $Person->insert( %$person )->execute;
+  }
+
+  my ($first_name, $last_name) = $Person->select
+                                        ->where( $Person->column('first_name'), '==', 'Homer' )
+                                        ->execute
+                                        ->fetchrow;
+
 
 =head1 DESCRIPTION
 
-=head1 METHODS 
+This module extends the L<Fey> module to allow L<Fey> table objects
+to have an active database handle so that the SQL objects that L<Fey>
+creates can actually be executed.
 
-=over 4
+You can think of this module as a bridge between L<Fey> which only
+deals with SQL code generation and L<Fey::ORM> which is a full fledged
+Object-Relational Mapping tool. Sometimes you don't need to inflate
+your data into objects, but only need a simple way to execute SQL, if
+that is the case, this may be the module for you.
 
-=item B<>
-
-=back
+This module aims to DWIM (Do What I Mean) in most cases and keep itself
+as simple as possible. The real power is in the L<Fey> modules that this
+extends, so if you don't see something here, go look there.
 
 =head1 BUGS
 
-All complex software has bugs lurking in it, and this module is no 
+All complex software has bugs lurking in it, and this module is no
 exception. If you find a bug please either email me, or add the bug
 to cpan-RT.
 

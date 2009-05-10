@@ -17,25 +17,17 @@ __END__
 
 =head1 NAME
 
-FeyX::Active::SQL::Insert - A Moosey solution to this problem
-
-=head1 SYNOPSIS
-
-  use FeyX::Active::SQL::Insert;
+FeyX::Active::SQL::Insert - An active INSERT statement
 
 =head1 DESCRIPTION
 
-=head1 METHODS 
-
-=over 4
-
-=item B<>
-
-=back
+This is a subclass of L<Fey::SQL::Insert> that also consumes
+the L<FeyX::Active::SQL> role. Please refer to both of those
+modules for more infomation.
 
 =head1 BUGS
 
-All complex software has bugs lurking in it, and this module is no 
+All complex software has bugs lurking in it, and this module is no
 exception. If you find a bug please either email me, or add the bug
 to cpan-RT.
 

@@ -11,7 +11,7 @@ extends 'Fey::Schema';
 
 has 'dbi_manager' => (
     is      => 'ro',
-    isa     => 'Fey::DBIManager',   
+    isa     => 'Fey::DBIManager',
     lazy    => 1,
     default => sub { Fey::DBIManager->new() },
 );
@@ -26,26 +26,38 @@ __END__
 
 =head1 NAME
 
-FeyX::Active::Schema - A Moosey solution to this problem
-
+FeyX::Active::Schema - An active Fey Schema
 
 =head1 SYNOPSIS
 
   use FeyX::Active::Schema;
 
+  my $schema = FeyX::Active::Schema->new( name => 'MySchema' );
+
+  $schema->dbi_manager->add_source( dsn => 'dbi:SQLite:dbname=foo' );
+
+  # ...
+
 =head1 DESCRIPTION
 
-=head1 METHODS 
+This is just a subclass of L<Fey::Schema> which also happens to
+have a L<Fey::DBIManager> instance handy. Nothing much else going
+on here actually.
+
+=head1 ATTRIBUTES
 
 =over 4
 
-=item B<>
+=item B<dbi_manager>
+
+This will lazily create a L<Fey::DBIManager> instance to be
+used by this schema.
 
 =back
 
 =head1 BUGS
 
-All complex software has bugs lurking in it, and this module is no 
+All complex software has bugs lurking in it, and this module is no
 exception. If you find a bug please either email me, or add the bug
 to cpan-RT.
 
