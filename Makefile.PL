@@ -8,7 +8,7 @@ license 'perl';
 
 # prereqs
 requires 'Fey';
-requires 'FeyX::DBIManager';
+requires 'Fey::DBIManager';
 
 # things the tests need
 build_requires 'DBI';
@@ -16,7 +16,7 @@ build_requires 'DBD::SQLite';
 build_requires 'Test::More'      => '0.62';
 build_requires 'Test::Exception' => '0.21';
 
-tests('t/*.t t/*/*.t');
+tests('t/*.t');
 
 WriteAll();
 

@@ -17,6 +17,7 @@ DEPENDENCIES
 This module requires these other modules and libraries:
 
    Fey
+   Fey::DBIManager
 
 COPYRIGHT AND LICENCE
 
