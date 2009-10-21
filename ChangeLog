@@ -1,4 +1,9 @@
 Revision history for Perl extension FeyX::Active
 
+0.02 Wednesday, Oct. 21, 2009
+    - FeyX::Active::Schema
+        - made the dbi_manager attribute read/write
+            - thanks to Adam J. Foxson for this
+
 0.01 Sunday, Aug. 30, 2009
     - releasing module

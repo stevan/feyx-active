@@ -1,7 +1,7 @@
 package FeyX::Active::Schema;
 use Moose;
 
-our $VERSION   = '0.01';
+our $VERSION   = '0.02';
 our $AUTHORITY = 'cpan:STEVAN';
 
 use Fey::Table;
@@ -52,6 +52,23 @@ on here actually.
 
 This will lazily create a L<Fey::DBIManager> instance to be
 used by this schema.
+
+As of 0.02, this attribute is read/write so that it better
+works with L<Fey::Loader>, like so:
+
+  my $dbi_manager = Fey::DBIManager->new();
+
+  $dbi_manager->add_source(...);
+
+  my $loader = Fey::Loader->new(
+      dbh          => $dbi_manager->default_source->dbh,
+      schema_class => 'FeyX::Active::Schema',
+      table_class  => 'FeyX::Active::Table',
+  );
+
+  my $schema = $loader->make_schema;
+
+  $schema->dbi_manager($dbi_manager);
 
 =back
 

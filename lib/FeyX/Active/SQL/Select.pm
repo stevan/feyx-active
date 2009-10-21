@@ -1,7 +1,7 @@
 package FeyX::Active::SQL::Select;
 use Moose;
 
-our $VERSION   = '0.01';
+our $VERSION   = '0.02';
 our $AUTHORITY = 'cpan:STEVAN';
 
 extends 'Fey::SQL::Select';
