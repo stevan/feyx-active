@@ -10,7 +10,7 @@ use Fey::DBIManager;
 extends 'Fey::Schema';
 
 has 'dbi_manager' => (
-    is      => 'ro',
+    is      => 'rw',
     isa     => 'Fey::DBIManager',
     lazy    => 1,
     default => sub { Fey::DBIManager->new() },
