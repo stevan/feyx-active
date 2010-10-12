@@ -1,5 +1,9 @@
 Revision history for Perl extension FeyX::Active
 
+0.03
+    - adding workaround for bug in Moose
+    - updating copyright
+
 0.02 Wednesday, Oct. 21, 2009
     - FeyX::Active::Schema
         - made the dbi_manager attribute read/write

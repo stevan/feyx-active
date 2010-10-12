@@ -1,4 +1,4 @@
-FeyX::Active version 0.02
+FeyX::Active version 0.03
 ===========================
 
 See the individual module documentation for more information
@@ -21,7 +21,7 @@ This module requires these other modules and libraries:
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2009 Infinity Interactive, Inc.
+Copyright (C) 2009-2010 Infinity Interactive, Inc.
 
 http://www.iinteractive.com
 

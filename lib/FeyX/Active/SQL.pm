@@ -1,7 +1,7 @@
 package FeyX::Active::SQL;
 use Moose::Role;
 
-our $VERSION   = '0.02';
+our $VERSION   = '0.03';
 our $AUTHORITY = 'cpan:STEVAN';
 
 has 'dbh' => (
@@ -22,7 +22,18 @@ sub prepare {
 sub execute {
     my $self = shift;
     my $sth  = $self->prepare;
-    $self->execute_rv( $sth->execute( $self->bind_params ) );
+    # NOTE:
+    # this is because of some silly Moose bug
+    # and the fact that dave uses those silly
+    # semiaffordance accessors.
+    # * sigh *
+    # - SL
+    if ($self->can('set_execute_rv')) {
+        $self->set_execute_rv( $sth->execute( $self->bind_params ) );
+    }
+    else {
+        $self->execute_rv( $sth->execute( $self->bind_params ) );
+    }
     $sth;
 }
 
@@ -106,7 +117,7 @@ Stevan Little E<lt>stevan.little@iinteractive.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2009 Infinity Interactive, Inc.
+Copyright 2009-2010 Infinity Interactive, Inc.
 
 L<http://www.iinteractive.com>
 

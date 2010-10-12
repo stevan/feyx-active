@@ -1,7 +1,7 @@
 package FeyX::Active::SQL::Select;
 use Moose;
 
-our $VERSION   = '0.02';
+our $VERSION   = '0.03';
 our $AUTHORITY = 'cpan:STEVAN';
 
 extends 'Fey::SQL::Select';
@@ -37,7 +37,7 @@ Stevan Little E<lt>stevan.little@iinteractive.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2009 Infinity Interactive, Inc.
+Copyright 2009-2010 Infinity Interactive, Inc.
 
 L<http://www.iinteractive.com>
 
