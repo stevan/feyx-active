@@ -1,6 +1,6 @@
 Revision history for Perl extension FeyX::Active
 
-0.03
+0.03 Tues. Oct. 12, 2010
     - adding workaround for bug in Moose
     - updating copyright
 
